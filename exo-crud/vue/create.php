@@ -19,12 +19,7 @@
         <input class="form-control" type="number" name="age" required>
 
         <input class="my-2 mx-auto btn btn-success" type="submit">
-    
     </form>
-    <div>
-        
-    </div>
-
     <div>
         <a href="./list_contact.php">Retour aux contacts</a>
     </div>
