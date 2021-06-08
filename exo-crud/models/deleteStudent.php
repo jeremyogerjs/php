@@ -1,5 +1,5 @@
 <?php
-
+include '../functions_custom.php';
 
 function deleteData(){
 
@@ -12,9 +12,11 @@ function deleteData(){
 	
 			$conn->exec($sql);
 			echo "delete success !";
+			
 		}
 		catch(PDOException $e){
 			echo "Error: " . $e->getMessage();
+			
 		}
 	}
 	else {

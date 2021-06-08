@@ -1,26 +1,26 @@
 <?php
-
+include '../functions_custom.php';
 function updateData(){
-	$firstName =  (!empty($_POST['firstName']) ? $_POST['firstName'] : '');
-	$lastName = (!empty($_POST['lastName']) ? $_POST['lastName'] : '');
-	$email = (!empty($_POST['email']) ? $_POST['email'] : '');
-	$phone = (!empty($_POST['phone']) ? $_POST['phone'] : '');
-	$age = (!empty($_POST['age']) ? $_POST['age'] : '');
+	$firstName =  htmlspecialchars((!empty($_POST['firstName']) ? $_POST['firstName'] : ''));
+	$lastName = htmlspecialchars((!empty($_POST['lastName']) ? $_POST['lastName'] : ''));
+	$email = htmlspecialchars((!empty($_POST['email']) ? $_POST['email'] : ''));
+	$phone = htmlspecialchars((!empty($_POST['phone']) ? $_POST['phone'] : ''));
+	$age = htmlspecialchars((!empty($_POST['age']) ? $_POST['age'] : ''));
 	$id = $_GET['id'];
 	$conn = pdo_connect_mysql();
 
 	if($conn) {
 		try{
 			$sql = "UPDATE students SET 
-				first_name	='$firstName',
-				last_name	='$lastName', 
-				email		='$email', 
-				age			='$age', 
-				phone		='$phone' 
-			WHERE id='$id'";
+				first_name	= ?,
+				last_name	= ?, 
+				email		= ?, 
+				age			= ?, 
+				phone		= ? 
+			WHERE id = ? ";
 	
 			$stmt = $conn ->prepare($sql);
-			$stmt->execute();
+			$stmt->execute([$firstName,$lastName,$email,$age,$phone,$id]);
 		
 			return "l'étudiant ".$firstName . "a été modifié avec succés !";
 		}

@@ -1,13 +1,11 @@
 <?php require('../controllers/single.php') ?>
-
-<?php $results = singleData() ?>
 <?php include './header.php' ?>
 <h2>One student</h2>
 
 <div>
 
     <div class="content">
-    <?php foreach($results as $value): ?>
+    <?php foreach($data as $value): ?>
         <p>code barre: <?= $value['id'] ?></p>
         <p>First Name : <?= $value['first_name'] ?></p>
         <p>Last Name : <?= $value['last_name'] ?></p>

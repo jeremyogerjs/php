@@ -1,4 +1,5 @@
 <?php
+include '../functions_custom.php';
 function getAllData(){
     $conn = pdo_connect_mysql();
 
