@@ -4,11 +4,8 @@ include 'functions_custom.php';
 // Home Page template below.
 ?>
 
-<?php echo template_header('Home'); ?>
+<?php include './vue/header.php' ?>
 
-<div class="content">
-	<h2>Accueil</h2>
-	<p>ma home page !</p>
-</div>
+<?php include './vue/home.php' ?>
 
-<?php echo template_footer(); ?>
+<?php include './vue/footer.php' ?>
