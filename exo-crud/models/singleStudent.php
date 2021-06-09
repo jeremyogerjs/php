@@ -1,5 +1,5 @@
 <?php
-include '../functions_custom.php';
+
 function singleData(){
     $conn = pdo_connect_mysql();
     if($conn){

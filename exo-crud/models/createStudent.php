@@ -1,5 +1,5 @@
 <?php
-include '../functions_custom.php';
+
 function createData(){
 	$conn = pdo_connect_mysql();
 	$firstName =  htmlspecialchars((!empty($_POST['firstName']) ? $_POST['firstName'] : ''));

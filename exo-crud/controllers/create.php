@@ -1,4 +1,5 @@
 <?php
+include '../functions_custom.php';
 require('../models/createStudent.php');
 
 if(!empty($_POST)){
