@@ -1,9 +1,9 @@
-<?php include 'header.php' ?>
+<?php ob_start(); ?>
 
 
 <div class="content read">
 	<h2>Voir les STUDENTS</h2>
-	<a href="../controllers/create.php" class="create-contact">Créer un étudiant</a>
+	<a href="index.php?action=create" class="create-contact">Créer un étudiant</a>
         <h3>
             <?php if(isset($_GET['method']) && $_GET['method'] === 'post'){
                 if($_GET['statut'] === 'success' ){
@@ -41,9 +41,9 @@
                 <td><?= $value['phone'] ?></td>
                 <td><?= $value['age'] ?></td>
                 <td class="actions">
-                    <a href="../controllers/single.php?id=<?= $value['id'] ?>" class="edit"> <i class="fas fa-user fa-xs"></i> </a>
-                    <a href="../controllers/update.php?id=<?= $value['id'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
-                    <a href="../controllers/delete.php?id=<?= $value['id'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
+                    <a href="index.php?action=single&id=<?= $value['id'] ?>" class="edit"> <i class="fas fa-user fa-xs"></i> </a>
+                    <a href="index.php?action=update&id=<?= $value['id'] ?>" class="edit"><i class="fas fa-pen fa-xs"></i></a>
+                    <a href="index.php?action=delete&id=<?= $value['id'] ?>" class="trash"><i class="fas fa-trash fa-xs"></i></a>
                 </td>
             </tr>
             
@@ -52,4 +52,5 @@
     </table>
 </div>
 
-<?php include 'footer.php' ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>

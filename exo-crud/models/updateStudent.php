@@ -1,5 +1,5 @@
 <?php
-include '../functions_custom.php';
+
 function updateData(){
 	$firstName =  htmlspecialchars((!empty($_POST['firstName']) ? $_POST['firstName'] : ''));
 	$lastName = htmlspecialchars((!empty($_POST['lastName']) ? $_POST['lastName'] : ''));

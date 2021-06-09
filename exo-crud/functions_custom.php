@@ -3,7 +3,7 @@ function pdo_connect_mysql() {
   require('db-config.php');
  
   try {
-    $conn = new PDO("mysql:host=$serverName;dbname=mon_test",$userName,$password);
+     $conn =  new PDO("mysql:host=$server_name;dbname=mon_test",$user_name,$password);
    
     //set the PDO error mode to exeption
     $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

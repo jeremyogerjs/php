@@ -1,5 +1,5 @@
 
-<?php include 'header.php' ?>
+<?php ob_start(); ?>
 <h2>One student</h2>
 
 <div>
@@ -16,9 +16,11 @@
     <?php endforeach; ?>
     </div>
 
-    <a href="../controllers/read.php">Retour aux contacts</a>
+    <a href="index.php?action=list">Retour aux contacts</a>
 
 
 </div>
 
-<?php include 'footer.php' ?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('template.php'); ?>
