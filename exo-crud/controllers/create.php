@@ -3,11 +3,17 @@ include '../functions_custom.php';
 require('../models/createStudent.php');
 
 if(!empty($_POST)){
-	createData();
-	header("location:http://localhost/php/exo-crud/controllers/read.php");
+	
+	if(createData()){
+		header("location:http://localhost/php/exo-crud/controllers/read.php?statut=success&method=post");
+	}
+	else
+	{
+		header("location:http://localhost/php/exo-crud/vue/create.php?statut=fail");
+	}
 }
 else
 {
-	require('../vue/create.php');
+	require('../vue/form.php');
 }
 

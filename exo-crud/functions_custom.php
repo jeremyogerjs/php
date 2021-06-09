@@ -8,9 +8,9 @@ function pdo_connect_mysql() {
     //set the PDO error mode to exeption
     $conn ->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     return $conn;
+
   } catch (PDOException $e) {
     return false;
   }
 };
 
-?>

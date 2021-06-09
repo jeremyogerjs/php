@@ -1,19 +1,22 @@
 <?php
-include '../functions_custom.php';
+
 require('../models/updateStudent.php');
-require('../models/singleStudent.php');
+
 
 if(isset($_GET['id']) && $_GET['id'] > 0 ){
-    $singleData = singleData();
-    require('../vue/update.php');
+    require('../vue/form.php');
     if(!empty($_POST)){
-        updateData();
-        header("location:http://localhost/php/exo-crud/controllers/read.php");
+        if(updateData()){
+            header("location:http://localhost/php/exo-crud/controllers/read.php?statut=success&method=update");
+        }
+        else
+        {
+            header("location:http://localhost/php/exo-crud/vue/form.php?statut=fail");
+        }
     }
     exit;
 }
 else
 {
-    
     exit("L'ID n'est pas défini !");
 }

@@ -5,6 +5,7 @@ require('../models/allStudents.php');
 
 if(!empty(getAllData())){
     $data = getAllData();
+     
     require('../vue/list_contact.php');
 }
 else

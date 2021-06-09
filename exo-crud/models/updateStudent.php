@@ -1,5 +1,5 @@
 <?php
-
+include '../functions_custom.php';
 function updateData(){
 	$firstName =  htmlspecialchars((!empty($_POST['firstName']) ? $_POST['firstName'] : ''));
 	$lastName = htmlspecialchars((!empty($_POST['lastName']) ? $_POST['lastName'] : ''));
@@ -22,11 +22,11 @@ function updateData(){
 			$stmt = $conn ->prepare($sql);
 			$stmt->execute([$firstName,$lastName,$email,$age,$phone,$id]);
 		
-			return "l'étudiant ".$firstName . "a été modifié avec succés !";
+			return true;
 		}
 		catch (PDOException $e)
 		{
-			echo "Un probléme est survenu, veuillez rafraichir la page et recommencer !";
+			return false;
 		}
 	
 	};
