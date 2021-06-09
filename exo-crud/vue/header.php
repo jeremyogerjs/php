@@ -13,8 +13,8 @@ echo <<<EOT
     <nav class="navtop">
       <div>
         <h1>Website Title</h1>
-          <a href="home.php"><i class="fas fa-home"></i>Home</a>
-          <a href="list_contact.php"><i class="fas fa-address-book"></i>Contacts</a>
+          <a href="../vue/home.php"><i class="fas fa-home"></i>Home</a>
+          <a href="../controllers/read.php"><i class="fas fa-address-book"></i>Contacts</a>
       </div>
     </nav>
 EOT;

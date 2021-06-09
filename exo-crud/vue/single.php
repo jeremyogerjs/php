@@ -1,5 +1,5 @@
-<?php require('../controllers/single.php') ?>
-<?php include './header.php' ?>
+
+<?php include 'header.php' ?>
 <h2>One student</h2>
 
 <div>
@@ -16,9 +16,9 @@
     <?php endforeach; ?>
     </div>
 
-    <a href="./list_contact.php">Retour aux contacts</a>
+    <a href="../controllers/read.php">Retour aux contacts</a>
 
 
 </div>
 
-<?php include './footer.php' ?>
+<?php include 'footer.php' ?>

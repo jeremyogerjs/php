@@ -1,8 +1,8 @@
-<?php include './header.php' ?>
+<?php include 'header.php' ?>
 <div class="content update">
 	<h2>Update Student </h2>
 
-    <form action="../controllers/update.php?id=<?= $_GET['id'] ?>" method="post">
+    <form action="../controllers/update.php?id= <?= $_GET['id'] ?>" method="post">
     
         <label class="form-label" for="firstName">First Name :</label>
         <input class="form-control" type="text" name="firstName" placeholder="first Name" required>
@@ -27,10 +27,10 @@
     </div>
 
     <div>
-        <a href="./list_contact.php">Retour aux contacts</a>
+        <a href="./read.php">Retour aux contacts</a>
     </div>
 
 </div>
-<?php include './footer.php' ?>
+<?php include 'footer.php' ?>
 
 

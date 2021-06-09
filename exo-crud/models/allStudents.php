@@ -18,8 +18,5 @@ function getAllData(){
         {
             echo 'Erreur: ' . $e->getMessage();
         }
-
     }
-
-
-}
+};

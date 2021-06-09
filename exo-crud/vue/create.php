@@ -1,4 +1,4 @@
-<?php include './header.php' ?>
+<?php include 'header.php' ?>
 <div class="content update">
 	<h2>Create Student</h2>
 	<form action="../controllers/create.php" method="post">
@@ -21,7 +21,7 @@
         <input class="my-2 mx-auto btn btn-success" type="submit">
     </form>
     <div>
-        <a href="./list_contact.php">Retour aux contacts</a>
+        <a href="./read.php">Retour aux contacts</a>
     </div>
 </div>
-<?php include './footer.php' ?>
+<?php include 'footer.php' ?>

@@ -1,12 +1,10 @@
 <?php
-
-
 require('../models/allStudents.php');
 
 
 if(!empty(getAllData())){
     $data = getAllData();
-    return $data;
+    require('../vue/list_contact.php');
 }
 else
 {
