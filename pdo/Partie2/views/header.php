@@ -4,43 +4,28 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>Document</title>
 </head>
 <body>
-
+    
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a href="/php/pdo/" class="navbar-brand">Home</a>
+        <a href="/php/pdo/Partie2" class="navbar-brand">Home</a>
         <div class="collapse navbar-collapse">
         
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a href="/php/pdo/" class="nav-link">Exo 1</a>
+                    <a href="/php/pdo/Partie2/views/ajout-patient.php" class="nav-link">créer patient</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/php/pdo/views/exo2.php" class="nav-link">Exo 2</a>
+                    <a href="/php/pdo/Partie2/views/liste-patients.php" class="nav-link">Liste patient</a>
                 </li>
 
                 <li class="nav-item">
-                    <a href="/php/pdo/views/exo3.php" class="nav-link">Exo 3</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/php/pdo/views/exo4.php" class="nav-link">Exo 4</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/php/pdo/views/exo5.php" class="nav-link">Exo 5</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/php/pdo/views/exo6.php" class="nav-link">Exo 6</a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="/php/pdo/" class="nav-link">Exo 7</a>
+                    <a href="/php/pdo/Partie2/views/ajout-rendezvous.php" class="nav-link">creer un rendez-vous</a>
                 </li>
             </ul>
         </div>
