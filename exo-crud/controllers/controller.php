@@ -1,27 +1,14 @@
 <?php
-//db Connect
-include 'functions_custom.php';
 
-//model post
-require('models/CreateStudent.php');
 
-//model delete
-require('models/DeleteStudent.php');
+//model Students
+require_once('./models/StudentManager.php');
 
-//model getAll
-require('models/AllStudent.php');
-
-//model getOne
-require('models/SingleStudent.php');
-
-//model updateOne
-require('models/UpdateStudent.php');
-
-function createStd(){
+function createStd () {
     
     if(!empty($_POST)){
-
-        if(createData()){
+        $create = new StudentManager();
+        if($create -> createData()){
             header("location:index.php?action=list&statut=success&method=post");
         }
         else
@@ -36,10 +23,10 @@ function createStd(){
     }
 };
 
-function deleteStd(){
-
+function deleteStd () {
+    $delete = new StudentManager() ;
     if(isset($_GET['id']) && $_GET['id'] > 0 ){
-        deleteData();
+        $delete -> deleteData();
         header("location:index.php?action=list");
         exit();
     }
@@ -49,9 +36,9 @@ function deleteStd(){
 };
 
 function allStd () {
-
-    if(!empty(getAllData())){
-        $data = getAllData();
+    $studentManager = new StudentManager();
+    if(!empty($studentManager -> getAllData())){
+        $data = $studentManager -> getAllData();
             
         require('./vue/list_contact.php');
     }
@@ -62,9 +49,9 @@ function allStd () {
 };
 
 function singleStd () {
-
+    $studentManager = new StudentManager();
     if(isset($_GET['id']) && $_GET['id'] > 0){
-        $data = singleData();
+        $data = $studentManager -> singleData();
         require('./vue/single.php');
     }
     else
@@ -74,12 +61,12 @@ function singleStd () {
 };
 
 function updateStd () {
-
+    $studentManager = new StudentManager();
     if(isset($_GET['id']) && $_GET['id'] > 0 ){
-        $data = singleData();
+        $data = $studentManager -> singleData();
         require('./vue/form.php');
         if(!empty($_POST)){
-            if(updateData()){
+            if($studentManager -> updateData()){
                 header("location:index.php?action=list&statut=success&method=update");
             }
             else
