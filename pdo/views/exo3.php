@@ -1,18 +1,13 @@
-<?php
-require('connection.php');
+<?php 
+require('../connection.php');
+require('../models/LimitClient.php');
 
-require('models/AllClient.php');
 
+require('header.php'); 
 ?>
 
-<?php require('views/header.php'); ?>
-
-
-
-<h1>Tout les clients !</h1>
-
 <div class="col-5">
-
+<h2>Les 20 premiers clients </h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -41,4 +36,5 @@ require('models/AllClient.php');
 </div>
 
 
-<?php require('views/footer.php'); ?>
+
+<?php require('footer.php'); ?>

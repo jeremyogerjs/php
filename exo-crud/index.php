@@ -1,6 +1,6 @@
 <?php
 
-require('./controllers/controller.php');
+require('./controllers/Controller.php');
 
 
 if(isset($_GET['action'])) {
@@ -18,6 +18,10 @@ if(isset($_GET['action'])) {
     }
     else if ($_GET['action'] === 'update') {
         updateStd();
+    }
+    else{
+        http_response_code(404);
+        throw new Exception("Page introuvable !");
     }
 }
 else

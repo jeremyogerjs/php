@@ -3,120 +3,93 @@
 include 'functions_custom.php';
 
 //model post
-require('models/createStudent.php');
+require('models/CreateStudent.php');
 
 //model delete
-require('models/deleteStudent.php');
+require('models/DeleteStudent.php');
 
 //model getAll
-require('models/allStudents.php');
+require('models/AllStudent.php');
 
 //model getOne
-require('models/singleStudent.php');
+require('models/SingleStudent.php');
 
 //model updateOne
-require('models/updateStudent.php');
+require('models/UpdateStudent.php');
 
 function createStd(){
-    try{
-        if(!empty($_POST)){
-	
-            if(createData()){
-                header("location:index.php?action=list&statut=success&method=post");
-            }
-            else
-            {
-                header("location:index.php?action=create&statut=fail");
-            }
+    
+    if(!empty($_POST)){
+
+        if(createData()){
+            header("location:index.php?action=list&statut=success&method=post");
         }
         else
         {
-            require('./vue/form.php');
+            throw new Exception('Echec de l\'envoie du formulaire !');
+            header("location:index.php?action=create&statut=fail");
         }
     }
-    catch(Exception $e)
+    else
     {
-        echo "Erreur : " . $e ->getMessage();
+        require('./vue/form.php');
     }
 };
 
 function deleteStd(){
-    try{
-        if(isset($_GET['id']) && $_GET['id'] > 0 ){
-            deleteData();
-            header("location:index.php?action=list");
-            exit();
-        }
-        else{
-           throw new Exception('Impossible de supprimer cette utilisateur');
-        }
+
+    if(isset($_GET['id']) && $_GET['id'] > 0 ){
+        deleteData();
+        header("location:index.php?action=list");
+        exit();
     }
-    catch(Exception $e){
-        echo 'Erreur : '. $e->getMessage();
+    else{
+        throw new Exception('Impossible de supprimer cette utilisateur');
     }
-    
 };
 
 function allStd () {
-    try{
-        if(!empty(getAllData())){
-            $data = getAllData();
-             
-            require('./vue/list_contact.php');
-        }
-        else
-        {
-            throw new Exception('Une erreur est survenue lors du chargement de la page veuillez rafraichir');
-        }
+
+    if(!empty(getAllData())){
+        $data = getAllData();
+            
+        require('./vue/list_contact.php');
     }
-    catch(Exception $e)
+    else
     {
-        echo "Erreur : ". $e->getMessage();
+        throw new Exception('Une erreur est survenue lors du chargement de la page veuillez rafraichir');
     }
 };
 
 function singleStd () {
-    try{
-        if(isset($_GET['id']) && $_GET['id'] > 0){
-            $data = singleData();
-            require('./vue/single.php');
-        }
-        else
-        {
-            throw new Exception('Impossible de sélectionner cette utilisateur veuillez réesayer');
-        }
-    }
-    catch(Exception $e)
-    {
-        echo "Erreur : " . $e ->getMessage();
-    }
 
+    if(isset($_GET['id']) && $_GET['id'] > 0){
+        $data = singleData();
+        require('./vue/single.php');
+    }
+    else
+    {
+        throw new Exception('Impossible de sélectionner cette utilisateur veuillez réesayer');
+    }
 };
 
 function updateStd () {
-    try{
-        if(isset($_GET['id']) && $_GET['id'] > 0 ){
-            $data = singleData();
-            require('./vue/form.php');
-            if(!empty($_POST)){
-                if(updateData()){
-                    header("location:index.php?action=list&statut=success&method=update");
-                }
-                else
-                {
-                    header("location:index.php?action=update&statut=fail");
-                }
+
+    if(isset($_GET['id']) && $_GET['id'] > 0 ){
+        $data = singleData();
+        require('./vue/form.php');
+        if(!empty($_POST)){
+            if(updateData()){
+                header("location:index.php?action=list&statut=success&method=update");
+            }
+            else
+            {
+                header("location:index.php?action=update&statut=fail");
             }
         }
-        else
-        {
-            throw new Exception('Votre edition n\'a pas abouti');
-        }
-
     }
-    catch(Exception $e)
+    else
     {
-        echo "Erreur : " . $e ->getMessage();
+        throw new Exception('Votre edition n\'a pas abouti');
     }
-    
 };

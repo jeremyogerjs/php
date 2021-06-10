@@ -1,18 +1,11 @@
-<?php
-require('connection.php');
+<?php require('../connection.php'); ?>
 
-require('models/AllClient.php');
+<?php require('../models/LoyaltyClient.php'); ?>
+<?php require('header.php'); ?>
 
-?>
-
-<?php require('views/header.php'); ?>
-
-
-
-<h1>Tout les clients !</h1>
 
 <div class="col-5">
-
+<h2>Liste des clients fidéles</h2>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -41,4 +34,4 @@ require('models/AllClient.php');
 </div>
 
 
-<?php require('views/footer.php'); ?>
+<?php require('footer.php'); ?>
