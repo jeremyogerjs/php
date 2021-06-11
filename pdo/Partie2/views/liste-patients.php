@@ -34,13 +34,13 @@ else
     <tbody>
         <?php foreach($results as $result): ?>
             <tr>
-            <td> <?= $result['id'] ?></td>
-            <td> <?= $result['lastname'] ?> </td>
-            <td> <?= $result['firstname'] ?> </td>
-            <td> <?= $result['birthdate'] ?> </td>
-            <td> <?= $result['phone'] ?> </td>
-            <td> <?= $result['mail'] ?> </td>
-            <td class="actions p-3 ">
+                <td> <?= $result['id'] ?></td>
+                <td> <?= $result['lastname'] ?> </td>
+                <td> <?= $result['firstname'] ?> </td>
+                <td> <?= $result['birthdate'] ?> </td>
+                <td> <?= $result['phone'] ?> </td>
+                <td> <?= $result['mail'] ?> </td>
+                <td class="actions p-3 ">
                     <a href="/php/pdo/Partie2/views/profil-patient.php?id=<?= $result['id'] ?>" class="edit"> <i class="fas fa-user "></i> </a>
                 </td>
             </tr>

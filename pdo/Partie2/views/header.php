@@ -27,6 +27,10 @@
                 <li class="nav-item">
                     <a href="/php/pdo/Partie2/views/ajout-rendezvous.php" class="nav-link">creer un rendez-vous</a>
                 </li>
+
+                <li class="nav-item">
+                    <a href="/php/pdo/Partie2/views/liste-rendezvous.php" class="nav-link">Liste rendez-vous</a>
+                </li>
             </ul>
         </div>
     </div>
