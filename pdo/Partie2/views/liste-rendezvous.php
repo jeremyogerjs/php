@@ -3,7 +3,7 @@ require('../connexion.php');
 
 if($conn)
 {
-    $sql = "SELECT * FROM appointments";
+    $sql = "SELECT * FROM appointments ";
 
     $result = $conn -> prepare($sql);
 
@@ -12,6 +12,7 @@ if($conn)
 
     $results = $result -> fetchAll(PDO::FETCH_ASSOC);
 
+    print_r($results);
     
 }
 
@@ -35,7 +36,9 @@ if($conn)
                     <td><?= $result['idPatients']; ?> </td>
                     <td><?= $result['dateHour']; ?> </td>
                     <td class="actions p-3 ">
-                        <a href="/php/pdo/Partie2/views/rendezvous.php?id=<?= $result['id'] ?>" class="edit"> <i class="fas fa-user "></i> </a>
+                        <a href="/php/pdo/Partie2/views/rendezvous.php?id=<?= $result['idPatients']; ?>" class="edit"> <i class="fas fa-user "></i> </a>
+                        <a href="/php/pdo/Partie2/views/ajout-rendezvous.php?id=<?= $result['idPatients']; ?>&action=update" class="edit"> <i class="fas fa-pen "></i> </a>
+                        <a href="/php/pdo/Partie2/views/ajout-rendezvous.php?id=<?= $result['idPatients']; ?>&action=delete" class="edit"> <i class="fas fa-trash "></i> </a>
                     </td>
                 </tr>
             <?php endforeach; ?>

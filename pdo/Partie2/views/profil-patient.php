@@ -3,13 +3,28 @@
 <?php
 if($conn)
 {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM patients WHERE id=$id";
+    if(!isset($_GET['action'])){
+        $id = $_GET['id'];
+        $sql = "SELECT * FROM patients WHERE id=$id";
+    
+        $result = $conn ->prepare($sql);
+        $result ->execute();
+    
+        $results = $result ->fetchAll(PDO::FETCH_ASSOC);
 
-    $result = $conn ->prepare($sql);
-    $result ->execute();
+    }
+    else
+    {
+        $id = $_GET['id'];
+        $sql = "DELETE FROM appointments LEFT JOIN patients ON patients.id = appointments.idPatients ";
 
-    $results = $result ->fetchAll(PDO::FETCH_ASSOC);
+        
+
+        $conn -> exec($sql);
+        echo "deleted success";
+
+    }
+
 }
 
 ?>
