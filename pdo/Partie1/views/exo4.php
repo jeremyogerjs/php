@@ -1,7 +1,5 @@
-<?php require('../connection.php'); ?>
 
-<?php require('../models/LoyaltyClient.php'); ?>
-<?php require('header.php'); ?>
+<?php ob_start(); ?>
 
 
 <div class="col-5">
@@ -34,4 +32,6 @@
 </div>
 
 
-<?php require('footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+
+<?php require('./template.php'); ?>

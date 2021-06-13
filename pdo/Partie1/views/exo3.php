@@ -1,9 +1,5 @@
 <?php 
-require('../connection.php');
-require('../models/LimitClient.php');
-
-
-require('header.php'); 
+ob_start();
 ?>
 
 <div class="col-5">
@@ -37,4 +33,5 @@ require('header.php');
 
 
 
-<?php require('footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('./template.php'); ?>

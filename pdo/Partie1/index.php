@@ -1,44 +1,45 @@
-<?php
-require('connection.php');
+<?php 
+require('./controller/controllers.php'); 
 
-require('models/AllClient.php');
+
+if(isset($_GET['action']))
+{
+    if($_GET['action'] === "list")
+    {
+        getAllClientData();
+    }
+    elseif ($_GET['action'] === "showType")
+    {
+        getAllShowType();
+    }
+    elseif ($_GET['action'] === "listLimit")
+    {
+        getLimitClientData();
+    }
+    elseif ($_GET['action'] === "listLoyalty")
+    {
+        getLoyaltyClientData();
+    }
+    elseif ($_GET['action'] === "filterClient")
+    {
+        getFilterClientData();
+    }
+    elseif ($_GET['action'] === "show")
+    {
+        getAllShow();
+    }
+    else if ($_GET['action'] === 'clientFormat')
+    {
+        getClientFormat();
+    }
+}
+else
+{
+    getAllClientData();
+}
+
+
+
+
 
 ?>
-
-<?php require('views/header.php'); ?>
-
-
-
-<h1>Tout les clients !</h1>
-
-<div class="col-5">
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Birth Date</th>
-            <th scope="col">Card</th>
-            <th scope="col">Card Number</th>
-        </tr>
-    </thead>
-    <tbody>
-    <?php foreach($results as $result): ?>
-        <tr>
-        <td> <?= $result['id'] ?></td>
-        <td> <?= $result['lastName'] ?> </td>
-        <td> <?= $result['firstName'] ?> </td>
-        <td> <?= $result['birthDate'] ?> </td>
-        <td> <?= $result['card'] ?> </td>
-        <td> <?= $result['cardNumber'] ?> </td>
-        </tr>
-    <?php endforeach; ?>
-    </tbody>
-
-</table>
-</div>
-
-
-<?php require('views/footer.php'); ?>

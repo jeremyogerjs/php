@@ -15,14 +15,7 @@ if($conn)
     }
     else
     {
-        $id = $_GET['id'];
-        $sql = "DELETE FROM appointments LEFT JOIN patients ON patients.id = appointments.idPatients ";
-
-        
-
-        $conn -> exec($sql);
-        echo "deleted success";
-
+        // je dois delete exo 11
     }
 
 }

@@ -1,9 +1,8 @@
 <?php 
-require('../connection.php'); 
-require('../models/OrderClient.php');
+ob_start();
 ?>
 
-<?php require('header.php'); ?>
+
 
 <div class="col-5">
 <h2>Client trié par ordre alphabétiques et afficher que le nom et prenom</h2>
@@ -19,4 +18,5 @@ require('../models/OrderClient.php');
 </div>
 
 
-<?php require('footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('./template.php'); ?>

@@ -1,12 +1,13 @@
-<?php 
-ob_start();
-?>
+<?php ob_start(); ?>
+
+<h1>Tout les clients !</h1>
 
 <div class="col-5">
-<h2>Listes clients custom </h2>
+
 <table class="table table-striped">
     <thead>
         <tr>
+            <th scope="col">#</th>
             <th scope="col">Last Name</th>
             <th scope="col">First Name</th>
             <th scope="col">Birth Date</th>
@@ -17,11 +18,12 @@ ob_start();
     <tbody>
     <?php foreach($results as $result): ?>
         <tr>
+        <td> <?= $result['id'] ?></td>
         <td> <?= $result['lastName'] ?> </td>
         <td> <?= $result['firstName'] ?> </td>
         <td> <?= $result['birthDate'] ?> </td>
-        <td> <?= $result['cardTypesId'] === "1" ? "oui" : 'non' ?> </td>
-        <td> <?= $result['cardTypesId'] === "1" ? $result['cardNumber'] : '' ?> </td>
+        <td> <?= $result['card'] ?> </td>
+        <td> <?= $result['cardNumber'] ?> </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
@@ -30,4 +32,5 @@ ob_start();
 </div>
 
 <?php $content = ob_get_clean(); ?>
+
 <?php require('./template.php'); ?>

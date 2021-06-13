@@ -1,7 +1,5 @@
 <?php 
-require('../connection.php'); 
-
-require('../models/Shows.php');
+ob_start();
 ?>
 
 <?php  require('header.php'); ?>
@@ -13,4 +11,5 @@ require('../models/Shows.php');
 <?php endforeach; ?>
 </div>
 
-<?php require('footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('./template.php'); ?>
