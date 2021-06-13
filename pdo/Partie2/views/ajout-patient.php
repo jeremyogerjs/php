@@ -1,6 +1,6 @@
 
-<?php require('../connexion.php'); ?>
-<?php require('header.php'); ?>
+
+<?php ob_start(); ?>
 <form action="" method="POST">
 
     <div class="col-4 mx-auto border border-round p-3">
@@ -22,22 +22,5 @@
         <input class="btn btn-success mx-auto my-3" type="submit" value="Ajouter">
     </div>
 </form>
-<?php require('footer.php'); ?>
-<?php
-
-
-if(!empty($_POST)){
-    $lastName = htmlspecialchars($_POST['lastName']);
-    $firstName = htmlspecialchars($_POST['firstName']);
-    $birthDate = htmlspecialchars($_POST['birthDate']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $email = htmlspecialchars($_POST['email']);
-    $sql = "INSERT INTO patients (lastname,firstname,birthdate,phone,mail) 
-            VALUES (?,?,?,?,?)";
-    $result = $conn ->prepare($sql);
-    $result ->execute([$lastName,$firstName,$birthDate,$phone,$email]);
-    echo "record success !";
-    return $result;
-}
-
-?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>

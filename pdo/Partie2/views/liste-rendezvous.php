@@ -1,23 +1,5 @@
-<?php
-require('../connexion.php');
+<?php ob_start();?>
 
-if($conn)
-{
-    $sql = "SELECT * FROM appointments ";
-
-    $result = $conn -> prepare($sql);
-
-    $result -> execute();
-
-
-    $results = $result -> fetchAll(PDO::FETCH_ASSOC);
-
-    print_r($results);
-    
-}
-
-?>
-<?php require('./header.php'); ?>
 
 <div class="col-5">
     <table class="table table-striped">
@@ -49,5 +31,5 @@ if($conn)
 
 
 </div>
-
-<?php require('./footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>

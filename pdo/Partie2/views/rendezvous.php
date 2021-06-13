@@ -1,25 +1,4 @@
-<?php require ('../connexion.php'); ?>
-
-
-<?php
-
-if($conn)
-{
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM patients LEFT JOIN appointments ON patients.id = appointments.idPatients WHERE patients.id = $id";
-
-    $result = $conn -> prepare($sql);
-
-    $result -> execute();
-
-    $results = $result -> fetchAll(PDO::FETCH_ASSOC);
-    print_r($results);
-}
-?>
-
-
-
-<?php require ('./header.php'); ?>
+<?php ob_start(); ?>
 
 <div class="card mx-auto my-2" style="width: 18rem;">
   <ul class="list-group list-group-flush">
@@ -34,5 +13,5 @@ if($conn)
   
 </div>
 
-
-<?php require ('./footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require ('template.php'); ?>

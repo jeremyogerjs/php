@@ -1,19 +1,4 @@
-<?php require('../connexion.php'); ?>
-
-<?php
-    if($conn){
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM patients WHERE id=$id";
-
-        $result = $conn ->prepare($sql);
-
-        $result ->execute();
-
-        $results = $result ->fetch(PDO::FETCH_ASSOC);
-    }
-
-?>
-<?php require('header.php'); ?>
+<?php ob_start(); ?>
 
 <form action="" method="POST">
 
@@ -36,28 +21,5 @@
         <input class="btn btn-success mx-auto my-3" type="submit" value="Modifier">
     </div>
 </form>
-<?php require('footer.php'); ?>
-<?php
-
-
-if(!empty($_POST)){
-    $lastName = htmlspecialchars($_POST['lastName']);
-    $firstName = htmlspecialchars($_POST['firstName']);
-    $birthDate = htmlspecialchars($_POST['birthDate']);
-    $phone = htmlspecialchars($_POST['phone']);
-    $email = htmlspecialchars($_POST['email']);
-    $id = $_GET['id'];
-    $sql = "UPDATE patients SET 
-            lastname    = ?,
-            firstname   = ?,
-            birthdate   = ?,
-            phone       = ?,
-            mail        = ? 
-            WHERE id    = ? ";
-    $result = $conn ->prepare($sql);
-    $result ->execute([$lastName,$firstName,$birthDate,$phone,$email,$id]);
-    echo "Update success !";
-    return $result;
-}
-
-?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>

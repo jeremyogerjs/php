@@ -1,43 +1,21 @@
-<?php require('../connexion.php'); ?>
-
-<?php
-if($conn)
-{
-    if(!isset($_GET['action'])){
-        $id = $_GET['id'];
-        $sql = "SELECT * FROM patients WHERE id=$id";
-    
-        $result = $conn ->prepare($sql);
-        $result ->execute();
-    
-        $results = $result ->fetchAll(PDO::FETCH_ASSOC);
-
-    }
-    else
-    {
-        // je dois delete exo 11
-    }
-
-}
-
-?>
-<?php require('header.php'); ?>
+<?php ob_start(); ?>
 
 <div class="card col-3 mx-auto">
 
     <div class="card-header">
         Patient #<?= $_GET['id'] ?>
     </div>
-    <?php foreach($results as $result) : ?>
+    
         <ul class="list-group list-group-flush">
-            <li class="list-group-item">Last Name : <?= $result['lastname'] ?> </li>
-            <li class="list-group-item">First Name :   <?= $result['firstname'] ?></li>
-            <li class="list-group-item">Birth Date :  <?= $result['birthdate'] ?></li>
-            <li class="list-group-item">Phone : <?= $result['phone'] ?></li>
-            <li class="list-group-item">Email : <?= $result['mail'] ?></li>
+            <li class="list-group-item">Last Name : <?= $results['lastname'] ?> </li>
+            <li class="list-group-item">First Name :   <?= $results['firstname'] ?></li>
+            <li class="list-group-item">Birth Date :  <?= $results['birthdate'] ?></li>
+            <li class="list-group-item">Phone : <?= $results['phone'] ?></li>
+            <li class="list-group-item">Email : <?= $results['mail'] ?></li>
         </ul>
-    <?php endforeach; ?>
-    <a href="/php/pdo/Partie2/views/updatePatient.php?id=<?= $_GET['id']; ?>"><button class="btn btn-success">  Modifier</button></a>
+    
+    <a href="/php/pdo/Partie2/index.php?action=update&target=patient&id=<?= $_GET['id']; ?>"><button class="btn btn-success">  Modifier</button></a>
 </div>
 
-<?php require('footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>

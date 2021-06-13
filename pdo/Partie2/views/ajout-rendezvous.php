@@ -1,18 +1,5 @@
-<?php
-require('../connexion.php');
+<?php ob_start(); ?>
 
-if($conn){
-    $sql = "SELECT id,lastname FROM patients";
-
-    $result = $conn ->prepare($sql);
-
-    $result -> execute();
-
-    $patients = $result ->fetchAll(PDO::FETCH_ASSOC);
-
-}
-?>
-<?php require('header.php'); ?>
 <form action="" method="POST">
 
     <div class="col-4 mx-auto border border-round p-3">
@@ -36,51 +23,5 @@ if($conn){
         <?php endif; ?>
     </div>
 </form>
-<?php require('footer.php'); ?>
-<?php
-
-if($conn)
-{
-    if(!empty($_POST && $_GET['action'] === "create")){
-
-        $date = strtotime(htmlspecialchars($_POST['date']) . htmlspecialchars($_POST['dateTime']));
-        $idPatient = htmlspecialchars($_POST['idPatient']);
-        $dateformat = date('Y-m-d H:i:s', $date);
-    
-        $sql = "INSERT INTO appointments (dateHour,idPatients) 
-        VALUES ( ?, ?)";
-        $result = $conn ->prepare($sql);
-    
-        $result ->execute([$dateformat, $idPatient]);
-        echo "record success !";
-        return $result;
-    }
-    else if (!empty($_POST) && $_GET['action'] === "update")
-    {
-        $date = strtotime(htmlspecialchars($_POST['date']) . htmlspecialchars($_POST['dateTime']));
-        $id = htmlspecialchars($_GET['id']);
-        $dateformat = date('Y-m-d H:i:s', $date);
-    
-        $sql = "UPDATE appointments SET dateHour = ? 
-        WHERE id = $id ";
-        $result = $conn ->prepare($sql);
-    
-        $result ->execute([$dateformat]);
-        echo "record success !";
-        return $result;
-    }
-    else if (isset($_GET['id']) && $_GET['action'] === "delete")
-    {
-        $id = $_GET['id'];
-        $sql = "DELETE FROM appointments WHERE id = $id";
-    
-        $conn -> exec($sql);
-        echo "deleted success !";
-
-    }
-
-
-}
-
-
-?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>

@@ -1,36 +1,4 @@
-<?php require('../connexion.php'); ?>
-<?php
-
-if($conn)
-{
-    if(empty($_POST)){
-
-        $sql = "SELECT * FROM patients";
-    $result = $conn ->prepare($sql);
-
-    $result ->execute();
-
-    $results = $result ->fetchAll(PDO::FETCH_ASSOC);
-    }
-    else
-    {
-        $search = htmlspecialchars($_POST['search']);
-        $sql = "SELECT * FROM patients WHERE lastname LIKE '%$search%'";
-    
-        $result = $conn -> prepare($sql);
-    
-        $result -> execute();
-    
-        $results = $result -> fetchAll(PDO::FETCH_ASSOC);
-    }
-}
-else
-{
-    echo "Une erreur est survenue veuillez reessayer ultérieurement !";
-}
-
-?>
-<?php require('header.php'); ?>
+<?php ob_start(); ?>
 
 <div class="row">
 
@@ -60,8 +28,8 @@ else
                         <td> <?= $result['phone'] ?> </td>
                         <td> <?= $result['mail'] ?> </td>
                         <td class="actions p-3 ">
-                            <a href="/php/pdo/Partie2/views/profil-patient.php?id=<?= $result['id'] ?>" class="edit"> <i class="fas fa-user "></i> </a>
-                            <a href="/php/pdo/Partie2/views/profil-patient.php?id=<?= $result['id'] ?>&action=delete" class="edit"> <i class="fas fa-trash "></i> </a>
+                            <a href="/php/pdo/Partie2/index.php?action=single&target=patient&id=<?= $result['id'] ?>" class="edit"> <i class="fas fa-user "></i> </a>
+                            <a href="/php/pdo/Partie2/index.php?action=delete&target=patient&id=<?= $result['id'] ?>&action=delete" class="edit"> <i class="fas fa-trash "></i> </a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -80,6 +48,7 @@ else
     </div>
 </div>
 
-<?php require('footer.php'); ?>
+<?php $content = ob_get_clean(); ?>
+<?php require('template.php'); ?>
 
 
