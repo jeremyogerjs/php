@@ -4,7 +4,7 @@
 
 
 
-    <div class="col-5">
+    <div class="col-7">
         <h2>Liste des patients </h2>
         <table class="table table-striped">
             <thead>

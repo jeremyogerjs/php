@@ -1,29 +1,41 @@
 <?php
-require('./controller/controllers.php');
+require('./controller/PatientsController.php');
+require('./controller/AppointmentsController.php');
 
 if(isset($_GET['action']))
 {
+    $PatientController = new PatientController();
     if($_GET['action'] === "create" && $_GET['target'] === "patient")
     {
         echo "test !!";
-        createPatient();
+        $PatientController -> createPatient();
     }
     else if ($_GET['action'] === "list" && $_GET['target'] === "patient")
     {
-        getAllPatient();
+        $PatientController -> getAllPatient();
     }
     else if ($_GET['action'] === "single" && $_GET['target'] === "patient" && $_GET['id'] >=0)
     {
         
-        singlePatient();
+        $PatientController -> singlePatient();
     }
     else if ($_GET['action'] === "update" && $_GET['target'] === "patient" && $_GET['id'] >=0)
     {
-        updatePatient();
+        $PatientController -> updatePatient();
     }
     else if ($_GET['action'] === "delete" && $_GET['target'] === "patient" && $_GET['id'] >=0)
     {
-        deletePatient();
+        $PatientController -> deletePatient();
+    }
+    else if ($_GET['action'] === 'create' && $_GET['target'] === "appointment")
+    {
+        $AppointmentController = new AppointmentsController();
+        $AppointmentController -> create();
+    }
+    else if ($_GET['action'] === 'update' && $_GET['target'] === "appointment")
+    {
+        $AppointmentController = new AppointmentsController();
+        $AppointmentController -> update();
     }
 }
 else
